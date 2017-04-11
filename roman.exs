@@ -38,9 +38,12 @@ defmodule Roman do
   def check_repetitions([h|t] , repetitions, repetitions, _, substitute_by, list), do: substitute_by <> List.to_string([h] ++ t)
   #
   
+  # Match on the character I am looking for, "h"
   def check_repetitions([h|t] , repetitions, acc, h, substitute_by, original_list) do
     check_repetitions(t, repetitions, acc + 1, h, substitute_by, original_list ++ [h])
   end
+  
+  # No match on the character I am looking for, "h". Continue for a partial match
   def check_repetitions([h|t] , repetitions, acc, search_for, substitute_by, original_list) do
     check_repetitions(t, repetitions, acc, search_for, substitute_by, original_list ++ [h])
   end
